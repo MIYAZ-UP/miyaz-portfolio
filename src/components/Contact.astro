@@ -1,0 +1,26 @@
+---
+import { profile, socialLinks } from "../data/portfolio";
+---
+<section id="contact" class="relative overflow-hidden border-t border-line py-28 sm:py-40" aria-label="Contact">
+ <div class="mx-auto max-w-7xl px-5 sm:px-8">
+  <div class="mb-10 flex items-baseline gap-6" data-reveal>
+   <span class="font-mono text-xs tracking-widest text-accent">04</span>
+   <p class="font-mono text-xs tracking-widest text-muted uppercase">let's connect and build something</p>
+  </div>
+  <a href={profile.social.linkedin} target="_blank" rel="noopener me" class="cta-giant block font-display text-[clamp(3rem,12vw,10.5rem)] leading-[0.95] font-extrabold tracking-tight uppercase" data-reveal>
+   Say hello<span aria-hidden="true"> ↗</span>
+  </a>
+  <div class="mt-16 grid gap-10 sm:grid-cols-2" data-reveal>
+   <div>
+    <p class="font-mono text-xs tracking-widest text-muted uppercase">find me online</p>
+    <div class="mt-4 flex flex-wrap gap-x-6 gap-y-4">
+     {socialLinks.map((link) => <a href={link.url} target="_blank" rel="noopener me" class="link-sweep text-paper">{link.label} ↗</a>)}
+    </div>
+   </div>
+   <div>
+    <p class="font-mono text-xs tracking-widest text-muted uppercase">published apps</p>
+    <a href={profile.social.playstore} target="_blank" rel="noopener" class="link-sweep mt-4 inline-block text-paper">Explore MZ LOOP on Google Play ↗</a>
+   </div>
+  </div>
+ </div>
+</section>

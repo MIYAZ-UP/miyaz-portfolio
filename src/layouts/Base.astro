@@ -1,0 +1,124 @@
+---
+import "@fontsource-variable/syne";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+import { profile, skills } from "../data/portfolio";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = `${profile.name} — ${profile.role}, ${profile.specialty}`,
+	description = profile.tagline,
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const gaId = import.meta.env.PUBLIC_GA_ID;
+const ogImage = Astro.site ? new URL(profile.ogImage, Astro.site).toString() : profile.ogImage;
+const avatarUrl = Astro.site ? new URL(profile.avatar, Astro.site).toString() : profile.avatar;
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: profile.name,
+	alternateName: profile.alias,
+	url: Astro.site?.toString(),
+	image: avatarUrl.toString(),
+	jobTitle: `${profile.role} — ${profile.specialty}`,
+	worksFor: {
+		"@type": "Organization",
+		name: profile.company,
+		url: profile.companyUrl,
+	},
+	sameAs: Object.values(profile.social),
+	knowsAbout: skills,
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: profile.name,
+	url: Astro.site?.toString(),
+	author: { "@type": "Person", name: profile.name },
+	description,
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={profile.name} />
+		<meta
+			name="keywords"
+			content="MIYAZ U P, MIYAZ-UP, MZ LOOP, Flutter app developer, Android, websites, portfolio"
+		/>
+		{canonical && <link rel="canonical" href={canonical} />}
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		{Astro.site && <link rel="sitemap" href="/sitemap-index.xml" />}
+		<meta name="theme-color" content="#0a0a0b" />
+		<meta name="color-scheme" content="dark" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={profile.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{canonical && <meta property="og:url" content={canonical} />}
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={`Portrait of ${profile.name}`} />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter -->
+		<meta name="twitter:creator" content="@miyaz_m_z" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+		{gaId && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>}
+		{
+			gaId && (
+				<script is:inline define:vars={{ gaId }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						dataLayer.push(arguments);
+					}
+					gtag("js", new Date());
+					gtag("config", gaId);
+				</script>
+			)
+		}
+
+		<script is:inline>
+			document.documentElement.classList.add("js");
+			// kill the legacy service worker + caches left behind by the previous site,
+			// otherwise returning visitors get served the old site cache-first forever
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker.getRegistrations().then((regs) => {
+					for (const reg of regs) reg.unregister();
+				});
+			}
+			if (window.caches) {
+				caches.keys().then((keys) => {
+					for (const key of keys) caches.delete(key);
+				});
+			}
+		</script>
+	</head>
+	<body class="bg-ink text-paper min-h-svh">
+		<slot />
+	</body>
+</html>
