@@ -53,11 +53,43 @@ export interface Project {
  desc: string;
  tech: string[];
  url: string;
- status: "live";
- platform: "Google Play" | "Website";
+ status: "live" | "open source";
+ platform: "Google Play" | "Website" | "GitHub";
 }
 
 export const projects: Project[] = [
+ {
+  name: "MIFY",
+  desc: "Music, radio, podcasts and audiobooks in one Android app.",
+  tech: ["Android", "Music & Audio"],
+  url: "https://play.google.com/store/apps/details?id=com.music.mify",
+  status: "live",
+  platform: "Google Play",
+ },
+ {
+  name: "MIFLIX",
+  desc: "A movie, TV, and anime discovery app with an Android APK download.",
+  tech: ["Android", "Movies", "TV", "Anime"],
+  url: "https://github.com/MIYAZ-UP/MIFLIX",
+  status: "open source",
+  platform: "GitHub",
+ },
+ {
+  name: "Mouzy",
+  desc: "A brand website for Mouzy, showcasing its Avil Milk offerings and story.",
+  tech: ["Web Development", "Brand Website"],
+  url: "https://mouzy-iota.vercel.app/",
+  status: "live",
+  platform: "Website",
+ },
+ {
+  name: "PaddyGuard AI",
+  desc: "A Dart-based paddy disease detection system.",
+  tech: ["Dart", "AI", "Agriculture"],
+  url: "https://github.com/MIYAZ-UP/PaddyGuard-AI-Paddy-Disease-Detection-System",
+  status: "open source",
+  platform: "GitHub",
+ },
  {
   name: "Cashew Co",
   desc: "A website I developed for Cashew Co. Explore the live project online.",
