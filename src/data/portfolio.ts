@@ -114,22 +114,8 @@ export const projects: Project[] = [
   status: "live",
   platform: "Google Play",
  },
- {
-  name: "NEET BRILLIANT Classes",
-  desc: "Free NEET repeater resources with Biology, Chemistry and Physics video classes and notes.",
-  tech: ["Android", "Education", "NEET"],
-  url: "https://play.google.com/store/apps/details?id=com.brilliantpala.neetfreeclasses",
-  status: "live",
-  platform: "Google Play",
- },
- {
-  name: "EDU REPEATER JEE",
-  desc: "Chemistry and Physics video classes, notes and study resources for JEE repeaters.",
-  tech: ["Android", "Education", "JEE"],
-  url: "https://play.google.com/store/apps/details?id=com.learn.edurepeaterjee",
-  status: "live",
-  platform: "Google Play",
- },
+
+
 ];
 
 export const skills = ["Flutter", "App Development", "Android", "Web Development", "Google Play", "AI Exploration"];
