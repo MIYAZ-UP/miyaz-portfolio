@@ -83,14 +83,6 @@ export const projects: Project[] = [
   platform: "Website",
  },
  {
-  name: "PaddyGuard AI",
-  desc: "A Dart-based paddy disease detection system.",
-  tech: ["Dart", "AI", "Agriculture"],
-  url: "https://github.com/MIYAZ-UP/PaddyGuard-AI-Paddy-Disease-Detection-System",
-  status: "open source",
-  platform: "GitHub",
- },
- {
   name: "Cashew Co",
   desc: "A website I developed for Cashew Co. Explore the live project online.",
   tech: ["Web Development", "Website"],
@@ -99,23 +91,29 @@ export const projects: Project[] = [
   platform: "Website",
  },
  {
-  name: "Mouzy",
-  desc: "A brand website I developed for Mouzy, showcasing its Avil Milk offerings and brand story.",
-  tech: ["Web Development", "Brand Website"],
-  url: "https://mouzy-iota.vercel.app/",
-  status: "live",
-  platform: "Website",
+  name: "PaddyGuard AI",
+  desc: "A Dart-based paddy disease detection system.",
+  tech: ["Dart", "AI", "Agriculture"],
+  url: "https://github.com/MIYAZ-UP/PaddyGuard-AI-Paddy-Disease-Detection-System",
+  status: "open source",
+  platform: "GitHub",
  },
  {
-  name: "MIFY",
-  desc: "An audio app for music, radio, podcasts and audiobooks, with lyrics, offline listening and Chromecast support.",
-  tech: ["Android", "Music & Audio"],
-  url: "https://play.google.com/store/apps/details?id=com.music.mify",
+  name: "NEET BRILLIANT Classes",
+  desc: "Free NEET repeater resources with Biology, Chemistry and Physics video classes and notes.",
+  tech: ["Android", "Education", "NEET"],
+  url: "https://play.google.com/store/apps/details?id=com.brilliantpala.neetfreeclasses",
   status: "live",
   platform: "Google Play",
  },
-
-
+ {
+  name: "EDU REPEATER JEE",
+  desc: "Chemistry and Physics video classes, notes and study resources for JEE repeaters.",
+  tech: ["Android", "Education", "JEE"],
+  url: "https://play.google.com/store/apps/details?id=com.learn.edurepeaterjee",
+  status: "live",
+  platform: "Google Play",
+ },
 ];
 
 export const skills = ["Flutter", "App Development", "Android", "Web Development", "Google Play", "AI Exploration"];
